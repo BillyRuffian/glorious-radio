@@ -1,0 +1,7 @@
+%h1
+  Feeds
+
+%ul 
+  - @feeds.each do |f| 
+    %li 
+      = link_to f.name, feed_path(f)
