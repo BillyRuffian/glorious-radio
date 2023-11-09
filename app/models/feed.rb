@@ -2,7 +2,7 @@ class Feed < ApplicationRecord
   has_many :episodes
 
   def refresh
-    fetch.entries.each do |entry|
+    fetch.entries.reverse.each do |entry|
       episode = Episode.find_or_initialize_by(url: entry.enclosure_url, feed: self)
       episode.update(
         title: entry.title,

@@ -1,9 +1,10 @@
+= turbo_stream_from @feed
+
 %h1
   = image_tag @feed.image
   = @feed.name
 
 = simple_format @feed.description
 
-%ul 
-  - @feed.episodes.each do |ep| 
-    %li= link_to ep.title, [@feed, ep]
+%ul#feed-episodes
+  = render partial: "episode", collection: @feed.episodes
