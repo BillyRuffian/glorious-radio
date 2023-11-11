@@ -3,9 +3,13 @@
 
 
 #audio{ data: { controller: 'audio-player' } }
-  = audio_tag @episode.url, controls: true, id: 'audio-source', data: { audio_player_target: 'audioSource', action: 'timeupdate->audio-player#playPositionUpdate loadedmetadata->audio-player#metadata' }
+  = audio_tag @episode.url, preload: 'metadata', controls: false, id: 'audio-source', data: { audio_player_target: 'audioSource', action: 'timeupdate->audio-player#playPositionUpdate loadedmetadata->audio-player#metadata' }
   %div
     = range_field_tag 'playhead', 0, class: 'w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700', data: { audio_player_target: 'playHead', action: 'change->audio-player#seek' } 
+    %span#time.numeric-fixed
+      %span#position{ data: { audio_player_target: 'position' } } -:-
+      \/
+      %span#duration{ data: { audio_player_target: 'duration' } } -:-
   %div
     %button{ data: { action: 'click->audio-player#playPause' } }
       Play / pause
