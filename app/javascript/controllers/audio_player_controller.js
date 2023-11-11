@@ -22,4 +22,8 @@ export default class extends Controller {
   metadata() {
     this.playHeadTarget.max = Math.floor(this.audioSourceTarget.duration)
   }
+
+  seek() {
+    this.audioSourceTarget.currentTime = this.playHeadTarget.value
+  }
 }
