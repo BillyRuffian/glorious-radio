@@ -2,17 +2,24 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="audio-player"
 export default class extends Controller {
-  static targets = [ "audioSource", "playHead", "duration", "position" ]
+  static targets = [ "audioSource", "playHead", "duration", "position", "playControl" ]
+  static classes = [ "play", "pause" ]
 
   connect() {
     console.log("connected");
   }
 
   playPause() {
-    if(this.audioSourceTarget.paused)
+    if(this.audioSourceTarget.paused) {
       this.audioSourceTarget.play()
-    else
+      this.playControlTarget.classList.remove(this.playClass)
+      this.playControlTarget.classList.add(this.pauseClass)
+    }
+    else {
       this.audioSourceTarget.pause()
+      this.playControlTarget.classList.remove(this.pausedClass)
+      this.playControlTarget.classList.add(this.playClass)
+    }
   }
 
   playPositionUpdate() {
