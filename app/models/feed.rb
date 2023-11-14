@@ -13,7 +13,6 @@ class Feed < ApplicationRecord
         bytes: Integer(entry.enclosure_length, exception: false),
         guid: entry.entry_id
       )
-      episode.save
     end
   end
 
