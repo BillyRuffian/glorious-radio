@@ -11,8 +11,6 @@ export default class extends Controller {
     const displayedHeight = this.animateTarget.clientHeight
     const contentHeight = this.animateTarget.scrollHeight
 
-    console.log(this.controlTarget)
-
     if(displayedHeight < contentHeight ) {
       this.animateTarget.style.height = contentHeight + "px"
       this.controlTarget.textContent = "less"
