@@ -18,4 +18,9 @@
     %button{ data: { action: 'click->audio-player#playPause' } }
       %i.play-control.iconoir-play-solid{ data: { audio_player_target: 'playControl' } }
 
-%p= simple_format @episode.description
+.episode-description-container{ data: { controller: 'animator' } }
+  .episode-description.h-20.overflow-hidden.tranition-height.duration-1000.ease-in-out.bg-gradient-to-b.from-zinc-900.to-zinc-100.dark:from-zinc-100.dark:to-zinc-900.text-transparent.bg-clip-text{ data: { animator_target: 'animate' } }= simple_format @episode.description
+  %button.w-full{ data: { action: 'click->animator#slideDown' } }
+    .flex.pb-5.items-center.text-sm
+      .flex-grow.border-t.border-orange-100.dark:border-orange-900
+      %span.flex-shrink.mx-4.text-orange-200.dark:text-orange-800{ data: { animator_target: 'control' } } more
