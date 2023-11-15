@@ -76,3 +76,5 @@ gem "feedjira", "~> 3.2"
 gem "haml-rails", "~> 2.1"
 
 gem "erb2haml", "~> 0.1.5"
+
+gem "devise", "~> 4.9"

@@ -1,26 +1,12 @@
 %h1= @episode.title
 %h2= @episode.published_at.to_formatted_s(:long_ordinal)
 
-
-#audio{ data: { controller: 'audio-player', 
-                audio_player_play_class: 'iconoir-play-solid', 
-                audio_player_pause_class: 'iconoir-pause-solid', 
-                audio_player_target: 'playPause' } } 
-
-  = audio_tag @episode.url, preload: 'metadata', controls: false, id: 'audio-source', data: { audio_player_target: 'audioSource', action: 'timeupdate->audio-player#playPositionUpdate loadedmetadata->audio-player#metadata' }
-  %div
-    = range_field_tag 'playhead', 0, class: 'w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700', data: { audio_player_target: 'playHead', action: 'change->audio-player#seek' } 
-    %span#time.numeric-fixed
-      %span#position{ data: { audio_player_target: 'position' } } -:-
-      \/
-      %span#duration{ data: { audio_player_target: 'duration' } } -:-
-  %div
-    %button{ data: { action: 'click->audio-player#playPause' } }
-      %i.play-control.iconoir-play-solid{ data: { audio_player_target: 'playControl' } }
-
 .episode-description-container{ data: { controller: 'animator' } }
   .episode-description.h-20.overflow-hidden.tranition-height.duration-1000.ease-in-out.bg-gradient-to-b.from-zinc-900.to-zinc-100.dark:from-zinc-100.dark:to-zinc-900.text-transparent.bg-clip-text{ data: { animator_target: 'animate' } }= simple_format @episode.description
   %button.w-full{ data: { action: 'click->animator#slideDown' } }
     .flex.pb-5.items-center.text-sm
-      .flex-grow.border-t.border-orange-100.dark:border-orange-900
-      %span.flex-shrink.mx-4.text-orange-200.dark:text-orange-800{ data: { animator_target: 'control' } } more
+      .flex-grow.border-t.border-orange-200.dark:border-orange-950
+      %span.flex-shrink.mx-4.text-orange-300.dark:text-orange-900{ data: { animator_target: 'control' } } more
+
+- content_for :footer do
+  = render partial: 'audio_player'

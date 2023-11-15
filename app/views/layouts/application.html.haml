@@ -11,6 +11,8 @@
     = stylesheet_link_tag "https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"
     = javascript_importmap_tags
     = yield :head
-  %body{ class: 'bg-zinc-100 dark:bg-zinc-900' }
-    %main.prose.prose-zinc.container.mx-auto.mt-28.px-5{ class: 'dark:prose-invert' }
+  %body.min-h-screen.bg-zinc-100.dark:bg-zinc-900
+    %main.prose.prose-zinc.mx-auto.pt-28.px-5.dark:prose-invert.pb-36
       = yield
+    %footer.fixed.bottom-0.left-0.right-0.px-5.bg-zinc-100.dark:bg-zinc-900.text-zinc-900.dark:text-zinc-200
+      = yield :footer
