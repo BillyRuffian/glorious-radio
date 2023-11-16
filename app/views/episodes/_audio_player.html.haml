@@ -1,5 +1,7 @@
-= turbo_frame_tag 'audio-frame' do 
-  %div{ class: 'bg-gradient-to-tl from-zinc-800 via-zinc-900 to-black border-zinc-950 px-10 py-4' }
+= turbo_frame_tag 'audio-frame' do
+  // dark:to-zinc-800 dark:via-zinc-900 dark:from-black 
+
+  %div{ class: 'bg-gradient-to-tr from-white via-zinc-300 to-zinc-100 dark:bg-gradient-to-tl dark:from-zinc-800 dark:via-zinc-900 dark:to-black px-10 py-4' }
     #audio{ data: { controller: 'audio-player', 
                     audio_player_play_class: 'iconoir-play-solid', 
                     audio_player_pause_class: 'iconoir-pause-solid', 
@@ -19,7 +21,7 @@
             .flex-1
               .truncate.text-sm #{@episode.feed.name} &mdash; #{@episode.title}
             .flex-1
-              = range_field_tag 'playhead', 0, class: 'w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700', data: { audio_player_target: 'playHead', action: 'change->audio-player#seek' } 
+              = range_field_tag 'playhead', 0, class: 'w-full h-2 bg-gray-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700', data: { audio_player_target: 'playHead', action: 'change->audio-player#seek' } 
           .flex-1
             #time.flex-1.text-sm.text-right.numeric-fixed
               %span#position{ data: { audio_player_target: 'position' } } -:-
