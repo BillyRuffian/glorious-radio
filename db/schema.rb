@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_113854) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_16_141211) do
   create_table "episodes", force: :cascade do |t|
     t.integer "feed_id", null: false
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_113854) do
     t.string "guid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["feed_id"], name: "index_episodes_on_feed_id"
     t.index ["url"], name: "index_episodes_on_url"
   end

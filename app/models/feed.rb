@@ -12,7 +12,8 @@ class Feed < ApplicationRecord
         description: entry.summary,
         mimetype: entry.enclosure_type,
         bytes: Integer(entry.enclosure_length, exception: false),
-        guid: entry.entry_id
+        guid: entry.entry_id,
+        image: entry.itunes_image
       )
     end
   end
