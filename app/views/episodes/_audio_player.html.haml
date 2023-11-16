@@ -20,8 +20,8 @@
               .truncate.text-sm #{@episode.feed.name} &mdash; #{@episode.title}
             .flex-1
               = range_field_tag 'playhead', 0, class: 'w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700', data: { audio_player_target: 'playHead', action: 'change->audio-player#seek' } 
-        .flex-none
-          %span#time.numeric-fixed
-            %span#position{ data: { audio_player_target: 'position' } } -:-
-            \/
-            %span#duration{ data: { audio_player_target: 'duration' } } -:-
+          .flex-1
+            #time.flex-1.text-sm.text-right.numeric-fixed
+              %span#position{ data: { audio_player_target: 'position' } } -:-
+              \/
+              %span#duration{ data: { audio_player_target: 'duration' } } -:-
