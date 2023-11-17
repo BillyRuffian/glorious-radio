@@ -78,5 +78,3 @@ gem "haml-rails", "~> 2.1"
 gem "erb2haml", "~> 0.1.5"
 
 gem "devise", "~> 4.9"
-
-gem "podcast_api", "~> 1.1"
