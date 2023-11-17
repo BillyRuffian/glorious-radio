@@ -35,6 +35,6 @@ class Feed < ApplicationRecord
   private
 
   def fetch
-    Feedjira.parse(HTTPX.get(url).body.to_s)
+    Feedjira.parse(HTTParty.get(url).body)
   end
 end
