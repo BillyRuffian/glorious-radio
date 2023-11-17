@@ -2,8 +2,22 @@ class Feed < ApplicationRecord
   has_many :episodes
   has_and_belongs_to_many :users
 
+  def self.new_from_url(url)
+    feed = Feed.find_or_initialize_by(url:)
+    feed.refresh
+    feed
+  end
+
   def refresh
-    fetch.entries.reverse.each do |entry|
+    rss = fetch
+
+    self.update(
+      name: rss.title,
+      image: rss.itunes_image,
+      description: rss.description
+    )
+
+    rss.entries.reverse.each do |entry|
       episode = Episode.find_or_initialize_by(url: entry.enclosure_url, feed: self)
       episode.update(
         title: entry.title,
