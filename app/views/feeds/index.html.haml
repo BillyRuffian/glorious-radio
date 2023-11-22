@@ -1,7 +1,12 @@
 %h1
-  Feeds
+  All podcasts 
 
+.grid.grid-cols-5.gap-2
+  = render partial: 'feed', collection: @feeds
+
+
+%h1 My podcasts
 %ul 
-  - @feeds.each do |f| 
+  - @subscribed.each do |f| 
     %li 
       = link_to f.name, feed_path(f)

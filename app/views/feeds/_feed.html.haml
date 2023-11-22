@@ -1,0 +1,7 @@
+.relative
+  = link_to feed do
+    = image_tag feed.image.strip, alt: feed.name, class: 'w-full m-0'
+  - if feed.subscribed?(current_user)
+    %i.iconoir-heart-solid.absolute.bottom-0.right-0.bg-white.text-red-900.text-xl.rounded-full.p-1
+  - else
+    %i.iconoir-heart.absolute.bottom-0.right-0.bg-white.text-red-900.text-xl.rounded-full.p-1
