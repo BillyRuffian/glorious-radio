@@ -1,10 +1,11 @@
 = turbo_stream_from @feed
 
-%h1
-  = image_tag @feed.image
-  = @feed.name
+= turbo_frame_tag 'content', data: { turbo_action: :advance } do
+  %h1
+    = image_tag @feed.image
+    = @feed.name
 
-= simple_format @feed.description
+  = simple_format @feed.description
 
-%ul#feed-episodes
-  = render partial: "episode", collection: @feed.episodes
+  %ul#feed-episodes
+    = render partial: "episode", collection: @feed.episodes

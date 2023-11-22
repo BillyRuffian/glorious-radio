@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @feeds = Feed.all
+    @feeds = Feed.includes(:users).limit(10)
     @subscribed = current_user.feeds.all
   end
 

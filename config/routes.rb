@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :feeds do
-    resources :episodes
+    resources :episodes do
+      get :play
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

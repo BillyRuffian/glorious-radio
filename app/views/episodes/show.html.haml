@@ -1,16 +1,15 @@
-%h1= @episode.title
-%h2= @episode.published_at.to_formatted_s(:long_ordinal)
+= turbo_frame_tag 'content', data: { turbo_action: 'advance' }  do
 
-= link_to [@episode.feed, @episode], data: { turbo_frame: 'audio-frame' } do 
-  %i.iconoir-play
-  play
+  %h1= @episode.title 
+  %h2= @episode.published_at.to_formatted_s(:long_ordinal)
 
-.episode-description-container{ data: { controller: 'animator' } }
-  .episode-description.h-20.overflow-hidden.tranition-height.duration-1000.ease-in-out.bg-gradient-to-b.from-zinc-900.to-zinc-100.dark:from-zinc-100.dark:to-zinc-900.text-transparent.bg-clip-text{ data: { animator_target: 'animate' } }= simple_format @episode.description
-  %button.w-full{ data: { action: 'click->animator#slideDown' } }
-    .flex.pb-5.items-center.text-sm
-      .flex-grow.border-t.border-orange-200.dark:border-orange-950
-      %span.flex-shrink.mx-4.text-orange-300.dark:text-orange-900{ data: { animator_target: 'control' } } more
+  = link_to feed_episode_play_path(@episode.feed, @episode), data: { turbo_frame: 'audio-frame' } do 
+    %i.iconoir-play
+    play
 
--# - content_for :footer do
--#   = render partial: 'audio_player'
+  .episode-description-container{ data: { controller: 'animator' } }
+    .episode-description.h-20.overflow-hidden.tranition-height.duration-1000.ease-in-out.bg-gradient-to-b.from-zinc-900.to-zinc-100.dark:from-zinc-100.dark:to-zinc-900.text-transparent.bg-clip-text{ data: { animator_target: 'animate' } }= simple_format @episode.description
+    %button.w-full{ data: { action: 'click->animator#slideDown' } }
+      .flex.pb-5.items-center.text-sm
+        .flex-grow.border-t.border-orange-200.dark:border-orange-950
+        %span.flex-shrink.mx-4.text-orange-300.dark:text-orange-900{ data: { animator_target: 'control' } } more
