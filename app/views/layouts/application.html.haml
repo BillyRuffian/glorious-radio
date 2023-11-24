@@ -16,4 +16,4 @@
       = yield
     %footer
       .fixed.bottom-0.left-0.right-0.px-0.bg-zinc-100.dark:bg-zinc-900.text-zinc-900.dark:text-zinc-200
-        = turbo_frame_tag 'audio-frame'
+        = turbo_frame_tag 'audio-frame', data: { turbo_permanent: true }
